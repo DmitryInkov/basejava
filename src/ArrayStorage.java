@@ -30,7 +30,7 @@ public class ArrayStorage {
     Resume get(String uuid) {
         //обход всех элементов массива
         for (int i = 0; i < size; i++) {
-           //если uuid текущего элемента равен заданному, то вернуть его
+            //если uuid текущего элемента равен заданному, то вернуть его
             if (storage[i].uuid.equals(uuid)) {
                 return storage[i];
             }
@@ -54,7 +54,7 @@ public class ArrayStorage {
         if (idx > -1) {
             //смещаем все элементы массива
             for (int i = idx; i < size - 1; i++) {
-                storage[i] = storage[i+1];
+                storage[i] = storage[i + 1];
             }
             storage[size - 1] = null;
         }
