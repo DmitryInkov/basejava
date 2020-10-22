@@ -2,7 +2,7 @@
  * Array based storage for Resumes
  */
 public class ArrayStorage {
-    private int capasity = 10000;
+    private final int capasity = 10000;
     private int size;
     Resume[] storage = new Resume[capasity];
 
@@ -17,13 +17,13 @@ public class ArrayStorage {
     }
 
     void save(Resume r) {
-        //если массив заолнен, тогда выйт из метода
+        //если массив заолнен, тогда выйти из метода
         if (size >= capasity) {
             return;
         }
         //добавление резюме в массив
         storage[size] = r;
-        //увеличение размера на1
+        //увеличение размера на 1
         size++;
     }
 
@@ -45,7 +45,7 @@ public class ArrayStorage {
             //если uuid текущего элемента равен заданному, то
             if (storage[i].uuid.equals(uuid)) {
                 //присвоение значения позиции удаленного из массива резюме
-                idx = 1;
+                idx = i;
                 //выход из цикла
                 break;
             }
@@ -56,10 +56,11 @@ public class ArrayStorage {
             for (int i = idx; i < size - 1; i++) {
                 storage[i] = storage[i + 1];
             }
+            //обнуляем последний элемент
             storage[size - 1] = null;
+            //уменьшаем размер на 1
+            size--;
         }
-        //уменьшаем размер на 1
-        size--;
     }
 
     /**
@@ -67,12 +68,12 @@ public class ArrayStorage {
      */
     Resume[] getAll() {
         //создание нового массива с резюме с размером реально заполненных элементов
-        Resume[] res = new Resume[size];
+        Resume[] resumes = new Resume[size];
         //добавление всех резюме в новый массив
         for (int i = 0; i < size; i++) {
-            res[i] = storage[i];
+            resumes[i] = storage[i];
         }
-        return res;
+        return resumes;
     }
 
     int size() {
